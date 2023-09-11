@@ -8,16 +8,19 @@ const movie = [
     id: 1,
     name: "JAWAN",
     actor: "SRK",
+    image:"https://www.livemint.com/lm-img/img/2023/09/08/1600x900/Jawan_1689069088718_1694147411741.jpg",
   },
   {
     id: 2,
     name: "PK",
     actor: "AMIR KHAN",
+    image:"https://www.livemint.com/lm-img/img/2023/09/08/1600x900/Jawan_1689069088718_1694147411741.jpg",
   },
   {
     id: 3,
     name: "KICK",
     actor: "SALMAN KHAN",
+    image:"https://www.livemint.com/lm-img/img/2023/09/08/1600x900/Jawan_1689069088718_1694147411741.jpg",
   },
 ];
 
@@ -31,7 +34,6 @@ server.get("/movie", function (req, res) {
   res.send(movie);
 });
 
-
 server.get("/movie/:id", function (req, res) {
   const id = movie.find((x) => x.id === Number(req.params.id));
   if (id) {
@@ -41,16 +43,13 @@ server.get("/movie/:id", function (req, res) {
   }
 });
 
-
 server.post("/movie", function (req, res) {
   const movieadd = req.body;
   cars.push(movieadd);
   res.status(201).send("Added");
 });
 
-
-
-server.delete("/movie/:id", async(req, res) => {
+server.delete("/movie/:id", async (req, res) => {
   const index = movie.findIndex((i) => i.id.toString() === req.params.id);
   if (index > -1) {
     movie.splice(index, 1);
@@ -58,7 +57,6 @@ server.delete("/movie/:id", async(req, res) => {
   } else {
     res.status(404).send("NOT FOUND");
   }
-
 });
 
 server.patch("/movie/:id", function (req, res) {
@@ -66,11 +64,11 @@ server.patch("/movie/:id", function (req, res) {
   const data = req.body;
   const index = movie.findIndex((c) => c.id.toString() === id);
   if (index > -1) {
-    const old = movie[index]
+    const old = movie[index];
     movie[index] = {
       ...old,
-      ...data
-    }
+      ...data,
+    };
     res.send("Updated");
   } else {
     res.status(404).send("Not Found");

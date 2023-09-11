@@ -14,6 +14,11 @@ const Mschema = mongoose.Schema(
       type: Number,
       required: [true],
     },
+      image: {
+      type: URL,
+      required: [true],
+    },
+
   },
   {
     timestamps: true,
